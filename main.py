@@ -41,6 +41,6 @@ print('\nCalcuating hand:')
 #i = trial_hand.calculate_hand(random_card)
 ##
 
-i = p1.calculate_hand(random_card)
-print(i)
+p1.calculate_hand(random_card)
+
 
