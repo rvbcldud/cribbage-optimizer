@@ -24,7 +24,23 @@ p1.display_hand()
 print('\nPlayer 2\'s cards: ')
 p2.display_hand()
 
-print('\nRandom card: ')
-print(random_card.read_card())
+# print('\nRandom card: ')
+# print(random_card.read_card())
+#
 
+print('\nCalcuating hand:')
+
+#trial_hand = Hand()
+
+#trial_hand.add_card(Card(5,3))
+#trial_hand.add_card(Card(5,2))
+#trial_hand.add_card(Card(5,1))
+#trial_hand.add_card(Card(3,1))
+#trial_hand.add_card(Card(3,2))
+
+#i = trial_hand.calculate_hand(random_card)
+##
+
+i = p1.calculate_hand(random_card)
+print(i)
 
