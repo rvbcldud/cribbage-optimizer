@@ -8,9 +8,11 @@ class Hand:
 
     def add_card(self, card):
         self.cards.append(card)
+        return self
 
     def remove_card(self, card):
         self.cards.remove(card)
+        return self
 
     def display_hand(self):
         for i in self.cards:
@@ -32,7 +34,11 @@ class Hand:
           - Create new variable value and change what is currently value to key
             - Set this when you populate the deck
         '''
+
+
         hand = self
+
+        # TODO incorporate cut card!
 
         def populate_combos(self):
             self.display_hand()
@@ -54,7 +60,7 @@ class Hand:
             key_list = sorted(key_list)
 
             # Search for duplicates of a number and populate a list with how
-            # many duplicates there are in a number: in the form of a list
+            # many duplicates there are in a number
             final_list = []
             for i in key_list:
                 temp = []

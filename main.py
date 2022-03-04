@@ -18,29 +18,18 @@ deck.deal_cards(6, p2)
 
 random_card = deck.random_card() # IT IS CALLED A CUT CARD  
 
+p1.remove_card(p1.cards[0])
+p1.remove_card(p1.cards[1])
+
 print('Player 1\'s cards: ')
 p1.display_hand()
 
-print('\nPlayer 2\'s cards: ')
-p2.display_hand()
+x = random_card.read_card()
 
-# print('\nRandom card: ')
-# print(random_card.read_card())
-#
+print('\t' + x)
 
 print('\nCalcuating hand:')
-
-#trial_hand = Hand()
-
-#trial_hand.add_card(Card(5,3))
-#trial_hand.add_card(Card(5,2))
-#trial_hand.add_card(Card(5,1))
-#trial_hand.add_card(Card(3,1))
-#trial_hand.add_card(Card(3,2))
-
-#i = trial_hand.calculate_hand(random_card)
-##
-
+print('\t' + x)
 p1.calculate_hand(random_card)
 
 
