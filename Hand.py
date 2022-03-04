@@ -18,7 +18,7 @@ class Hand:
         for i in self.cards:
             print('\t' + i.read_card())
 
-    def calculate_hand(self, cut_card):
+    def calculate_hand(self, cut_card=None):
         '''
         Calculate all 5, 4, 3, 2 combinations
         This means we need to split up all kinds of earning points
@@ -35,8 +35,9 @@ class Hand:
             - Set this when you populate the deck
         '''
 
-
-        hand = self
+        if cut_card is not None:
+            hand = self.add_card(cut_card)
+            print('CUT CARD DETECTED')
 
         # TODO incorporate cut card!
 
@@ -99,6 +100,7 @@ class Hand:
                 max_len = 3
                 for card in hand:
                     key_list.append(card.key)
+                print(key_list)
                 if check_consecutive(key_list) and len(key_list) > 2:
                     if len(key_list) == 4:
                         max_len = 4
@@ -110,7 +112,7 @@ class Hand:
                     for card in hand:
                         print(card.read_card())
 
-            run_list=[x for x in run_list if len(x)>=max_len]
+            run_list=[x for x in run_list if len(x)==max_len]
 
             points = 0
 
@@ -154,6 +156,10 @@ class Hand:
         total_points = pairs + runs + fifteens
 
         print('TOTAL POINTS:', total_points)
+
+        self.remove_card(cut_card)
+
+        return total_points
 
 
 
