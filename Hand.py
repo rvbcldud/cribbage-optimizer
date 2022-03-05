@@ -44,7 +44,7 @@ class Hand:
         def populate_combos(self):
             self.display_hand()
             combos = []
-            for i in range(len(self.cards) + 1):
+            for i in range(len(self.cards)):
                 temp = [list(x) for x in combinations(self.cards, i)]
                 if len(temp) > 0:
                     combos.extend(temp)
@@ -100,7 +100,6 @@ class Hand:
                 max_len = 3
                 for card in hand:
                     key_list.append(card.key)
-                print(key_list)
                 if check_consecutive(key_list) and len(key_list) > 2:
                     if len(key_list) == 4:
                         max_len = 4
