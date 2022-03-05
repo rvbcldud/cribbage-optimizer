@@ -1,4 +1,5 @@
 from itertools import combinations
+from random import choice
 
 import numpy as np
 
@@ -35,9 +36,10 @@ class Hand:
 
         if cut_card is not None:
             hand = self.add_card(cut_card)
+        else:
+            hand = self
 
         def populate_combos(self):
-            self.display_hand()
             combos = []
             for i in range(len(self.cards)):
                 temp = [list(x) for x in combinations(self.cards, i)]
@@ -141,6 +143,43 @@ class Hand:
         total_points = pairs + runs + fifteens
 
         # Remove cut card and return the hand to its original state
-        self.remove_card(cut_card)
+        if cut_card:
+            self.remove_card(cut_card)
 
         return total_points
+
+    def choose_crib(self):
+        combo_list = []
+
+        # Create a list of all 4 card hands from a 6 card hand
+        for combo in combinations(self.cards, 4):
+            temp = Hand()
+            for card in combo:
+                temp.add_card(card)
+            combo_list.append(temp)
+
+        best_hands = []
+        max_points = 0
+
+        # Calculates value of the 4 card sub-hands of the current 6 card hand
+        for hand in combo_list:
+            points = hand.calculate_hand()
+            if points > max_points:
+                max_points = points
+
+            best_hands.append((points, hand))
+
+        # Filters the list of points and hands to only give a list of the
+        # hands with the highest value
+        best_hands = [x[1] for x in best_hands if x[0] == max_points]
+
+        chosen_hand = choice(best_hands)
+
+        # Finds the 2 cards that are not included in the best hand, and puts
+        # them into the crib
+        crib_diff = list(set(self.cards) - set(chosen_hand.cards))
+        crib_hand = Hand()
+        for i in crib_diff:
+            crib_hand.add_card(i)
+
+        return chosen_hand, crib_hand
