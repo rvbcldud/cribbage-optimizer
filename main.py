@@ -17,10 +17,7 @@ deck.deal_cards(6, p1)
 deck.deal_cards(6, p2)
 
 random_card = deck.random_card()  # IT IS CALLED A CUT CARD
-<<<<<<< HEAD
 
-=======
->>>>>>> 07473aff21711987b9c3514672a3c81d2994686d
 
 # testHand = Hand()
 # testHand.add_card(Card(1,1))
@@ -35,16 +32,11 @@ x = random_card.read_card()
 # y = Card(4,1)
 
 print("\nCalcuating hand:")
-<<<<<<< HEAD
 
-=======
->>>>>>> 07473aff21711987b9c3514672a3c81d2994686d
 p1.calculate_hand(random_card)
 
 print("-------------")
 p1.display_hand()
-<<<<<<< HEAD
-=======
 
 chosen_hand, crib = p1.choose_crib()
 
@@ -55,4 +47,3 @@ chosen_hand.display_hand()
 
 print("\nHere is what you should put in the crib: ")
 crib.display_hand()
->>>>>>> 07473aff21711987b9c3514672a3c81d2994686d
