@@ -47,28 +47,36 @@ class Card:
             if int(key) >= 2 and int(key) <= 10:
                 key = int(key) # Keep it!
             else:
-                raise ValueError("Invalid card rank; must be A,1,2,...,K")
+                raise ValueError
+
         # Otherwise matching it to correct face card or ace
-        else:
+        elif key.isalpha():
+            key = key.upper()
+            print("Key:", key)
             if key == "J":
                 key = 11
             elif key == "Q":
-                key == 12
+                key = 12
             elif key == "K":
                 key = 13
             elif key == "A":
                 key = 1
             else:
                 raise ValueError("Invalid card rank; must be A,1,2,...,K")
-        
-        if suit == "H":
-            suit = 0
-        elif suit == "D":
-            suit = 1
-        elif suit == "C":
-            suit = 2
-        elif suit == "S":
-            suit = 3
+        else:
+            raise ValueError("Invalid card rank; must be A,1,2,...,K")
+        if suit.isalpha():
+            suit = suit.upper() 
+            if suit == "H":
+                suit = 0
+            elif suit == "D":
+                suit = 1
+            elif suit == "C":
+                suit = 2
+            elif suit == "S":
+                suit = 3
+            else:
+                raise ValueError("Invalid suit; must be H, D, C, or S")
         else:
             raise ValueError("Invalid suit; must be H, D, C, or S")
 
