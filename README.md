@@ -14,7 +14,7 @@ $ cribbage-opt
 ```
 
 It will welcome you then ask:
-```bash
+```console
 Welcome to cribbage-optimizer!
 Would you like to input a hand (h) or draw randomly (r)?
 ```
@@ -22,7 +22,7 @@ Would you like to input a hand (h) or draw randomly (r)?
 From here you have an option of inputting your own hand or having it draw six cards and do the optimization for you.
 ### Card input
 If you so choose to input your own hand, it must be in the following format:
-```bash
+```console
 AC 5S 6H jD kc 5d
 ```
 There are a couple of requirements:
@@ -33,7 +33,7 @@ There are a couple of requirements:
 
 ### Example output
 
-```bash
+```console
 $ cribbage-opt
 Welcome to cribbage-optimizer!
 Would you like to input a hand (h) or draw randomly (r)? h
