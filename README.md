@@ -27,8 +27,8 @@ AC 5S 6H jD kc 5d
 ```
 There are a couple of requirements:
 - Each card (e.g., "5S") must be separated by a space
-- The first part is the rank, valid inputs are all face card letters (uppercase or lowercase: e.g., "A" or "a")
-- The secoind part is the suit, valid inputs are the first letter of the suits name (D, H, C, S). These can also be lowercase
+- The first part is the rank, valid inputs are all face card letters (uppercase or lowercase: e.g., "A" or "a") and number 2-10
+- The second part is the suit, valid inputs are the first letter of the suits name (D, H, C, S). These can also be lowercase
 
 
 ### Example output
