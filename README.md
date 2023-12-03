@@ -3,13 +3,13 @@ This nifty CLI application calculates and chooses your cribbage hand for you!
 
 ## Install
 In order to install this package, type the following into the command line when at the project's directory:
-```bash
+```console
 $ python3 setup.py install --user
 ```
 
 ## Usage
 Starting up the application is as simple as:
-```bash
+```console
 $ cribbage-opt
 ```
 
