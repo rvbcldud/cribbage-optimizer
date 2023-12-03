@@ -52,7 +52,7 @@ class Card:
         # Otherwise matching it to correct face card or ace
         elif key.isalpha():
             key = key.upper()
-            print("Key:", key)
+            # print("Key:", key)
             if key == "J":
                 key = 11
             elif key == "Q":

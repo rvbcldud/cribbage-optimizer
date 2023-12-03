@@ -24,6 +24,8 @@ def main():
             best_crib.display_hand()
 
             print("With a guaranteed number of points of:", points)
+            
+            loop_ask()
 
 
 
