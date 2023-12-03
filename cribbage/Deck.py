@@ -1,4 +1,4 @@
-from Card import Card
+from cribbage import Card
 from random import shuffle, choice
 
 

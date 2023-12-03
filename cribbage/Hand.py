@@ -1,5 +1,6 @@
 from itertools import combinations
 from random import choice
+from .Card import Card
 
 import numpy as np
 
@@ -178,6 +179,8 @@ class Hand:
         best_hands = [x[1] for x in best_hands if x[0] == max_points]
 
         chosen_hand = choice(best_hands)
+        # Calculate the gaurenteed number of points of chosen hand
+        guaranteed = Hand.calculate_hand(chosen_hand)
 
         # Finds the 2 cards that are not included in the best hand, and puts
         # them into the crib
@@ -186,4 +189,16 @@ class Hand:
         for i in crib_diff:
             crib_hand.add_card(i)
 
-        return chosen_hand, crib_hand
+        return chosen_hand, crib_hand, guaranteed
+    
+    def read_hand(hand):
+        """Takes a series of 7 cards, the first of which is the cut card
+            and converts it into a language python can understand"""
+        parsed_hand = Hand()
+        cards = hand.split()
+        for card in cards:
+            parsed_hand.add_card(Card.parse_card(card))
+
+        return parsed_hand
+
+        
