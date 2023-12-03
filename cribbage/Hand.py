@@ -7,13 +7,22 @@ import numpy as np
 
 class Hand:
     def __init__(self):
+        """
+        Initializes a hand of cards
+        """
         self.cards = []
 
     def add_card(self, card):
+        """
+        Adds given card to current hand
+        """
         self.cards.append(card)
         return self
 
     def remove_card(self, card):
+        """
+        Removes given card from current hand
+        """
         self.cards.remove(card)
         return self
 
@@ -25,6 +34,15 @@ class Hand:
             print("\t" + i.read_card())
 
     def calculate_hand(self, cut_card=None):
+        """
+        Calculates the score of a given set of cards. It does this by calculating
+        each type of score:
+        - Pairs
+        - Runs
+        - Fifteens
+        """
+
+
         """
         Calculate all 5, 4, 3, 2 combinations
         This means we need to split up all kinds of earning points
@@ -154,6 +172,11 @@ class Hand:
         return total_points
 
     def choose_crib(self):
+        """
+        From the present hand of 6 cards, choose_crib() will calculate
+        all the possibile hands within it and output the best possible
+        hand and crib selection with the greatest number of guaranteed points
+        """
         combo_list = []
 
         # Create a list of all 4 card hands from a 6 card hand
@@ -192,8 +215,10 @@ class Hand:
         return chosen_hand, crib_hand, guaranteed
     
     def read_hand(hand):
-        """Takes a series of 7 cards, the first of which is the cut card
-            and converts it into a language python can understand"""
+        """
+        Takes a series of 7 cards, the first of which is the cut card
+        and converts it into a language python can understand
+        """
         parsed_hand = Hand()
         cards = hand.split()
         for card in cards:

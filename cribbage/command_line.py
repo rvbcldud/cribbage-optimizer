@@ -15,8 +15,10 @@ def main():
             parsed_hand.display_hand()
 
             print("\nThe following is the optimal chosen hand and crib for"
-                " the greatest number of guaranteed points\n")
+                " the greatest number of guaranteed points:\n")
+
             best_hand, best_crib, points = Hand.choose_crib(parsed_hand)
+
             print("Best hand:")
             best_hand.display_hand()
 
@@ -26,9 +28,6 @@ def main():
             print("With a guaranteed number of points of:", points)
             
             loop_ask()
-
-
-
 
         # Randomized hand:
         if mode == 0:
@@ -41,11 +40,11 @@ def main():
 
             hand.display_hand()
 
-
             print("\nThe following is the optimal chosen hand and crib for"
-                " the greatest number of guaranteed points\n")
+                " the greatest number of guaranteed points:\n")
 
             best_hand, best_crib, points = Hand.choose_crib(hand)
+
             print("Best hand:")
             best_hand.display_hand()
 
@@ -56,10 +55,6 @@ def main():
 
             loop_ask()
             
-
-    
-
-
 def start():
     while True:
         mode = input("Would you like to input a hand (h) or "

@@ -47,7 +47,7 @@ The hand you imported:
         Jack of Hearts
         King of Spades
 
-The following is the optimal chosen hand and crib for the greatest number of guaranteed points
+The following is the optimal chosen hand and crib for the greatest number of guaranteed points:
 
 Best hand:
         Five of Diamonds

@@ -18,6 +18,9 @@ class Card:
     SUITS = {0: "Hearts", 1: "Diamonds", 2: "Clubs", 3: "Spades"}
 
     def __init__(self, key, suit):
+        """
+        Initializes a card with given rank/key and suit
+        """
         self.key = key
         self.suit = suit
         if key < 10:
@@ -26,6 +29,10 @@ class Card:
             self.value = 10
 
     def read_card(self):
+        """
+        Prints the present card's human readable card name
+        - e.g., key = 1 & suit = 1 -> Ace of Diamonds
+        """
         key = Card.KEYS.get(self.key)  # 1 -> Ace
         suit = Card.SUITS.get(self.suit)  # 1 -> Diamonds
         card_name = key + " of " + suit
@@ -33,6 +40,11 @@ class Card:
         return card_name
     
     def parse_card(card):
+        """
+        Takes a string of the following format: "jC", "5c", etc.
+        - The first part is the rank, valid inputs are all face card letters (uppercase or lowercase: e.g., "A" or "a")
+        - The secoind part is the suit, valid inputs are the first letter of the suits name (D, H, C, S). These can also be lowercase
+        """
         if (len(card) < 2 or len(card) > 3):
             raise ValueError("Card given not in the correct format")
 
