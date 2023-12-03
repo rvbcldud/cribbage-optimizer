@@ -59,7 +59,7 @@ class Card:
             if int(key) >= 2 and int(key) <= 10:
                 key = int(key) # Keep it!
             else:
-                raise ValueError
+                raise ValueError("Invalid card rank; must be A,1,2,...,K")
 
         # Otherwise matching it to correct face card or ace
         elif key.isalpha():
