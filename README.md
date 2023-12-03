@@ -4,13 +4,13 @@ This nifty CLI application calculates and chooses your cribbage hand for you!
 ## Install
 In order to install this package, type the following into the command line when at the project's directory:
 ```bash
-python3 setup.py install --user
+$ python3 setup.py install --user
 ```
 
 ## Usage
 Starting up the application is as simple as:
 ```bash
-cribbage-opt
+$ cribbage-opt
 ```
 
 It will welcome you then ask:
@@ -34,6 +34,7 @@ There are a couple of requirements:
 ### Example output
 
 ```bash
+$ cribbage-opt
 Welcome to cribbage-optimizer!
 Would you like to input a hand (h) or draw randomly (r)? h
 Please input 6 cards: 5d 5H 5C 5s jh kS
