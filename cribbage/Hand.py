@@ -1,4 +1,4 @@
-from itertools import combinations
+from itertools import combinations, permutations
 from random import choice
 from .Card import Card
 
@@ -75,7 +75,8 @@ class Hand:
             combos = []
             for i in range(len(hand.cards)):
                 # Make all different length combinations from 1 -> n
-                temp = [list(x) for x in combinations(hand.cards, i + 1)]
+                k = i + 1
+                temp = [list(x) for x in combinations(hand.cards, k)]
                 if len(temp) > 0:
                     combos.extend(temp)
             return combos
@@ -119,14 +120,24 @@ class Hand:
                 n = len(lst) - 1
                 return sum(np.diff(lst) == 1) >= n
 
+            def check_consecutive_perm(lst):
+                # Checks to see if the list of integers is consecutive in any permutation
+                for perm in list(permutations(lst)):
+                    if check_consecutive(perm):
+                        return True
+                return False
+
             run_list = []
 
             for hand in combo_list:
                 key_list = []
                 max_len = 3
+                print("//")
+                Hand(hand).display_hand()
+                print("//")
                 for card in hand:
                     key_list.append(card.key)
-                if check_consecutive(key_list) and len(key_list) > 2:
+                if check_consecutive_perm(key_list) and len(key_list) > 2:
                     if len(key_list) == 4:
                         max_len = 4
                     elif len(key_list) == 5:
@@ -156,6 +167,7 @@ class Hand:
                     five_count += 1
                     points += 5
                 elif len(i) == 4:
+                    print("FOUR")
                     if five_count > 0:
                         continue
                     four_count += 1
@@ -195,6 +207,8 @@ class Hand:
         fifteens = calculate_fifteen(combos)
 
         total_points = pairs + runs + fifteens
+
+        print("15:", fifteens, "runs:", runs, "pairs:", pairs)
 
         # Remove cut card and return the hand to its original state
         if cut_card:
