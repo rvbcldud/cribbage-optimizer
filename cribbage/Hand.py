@@ -6,11 +6,14 @@ import numpy as np
 
 
 class Hand:
-    def __init__(self):
+    def __init__(self, card_list=None):
         """
         Initializes a hand of cards
         """
-        self.cards = []
+        if card_list != None:
+            self.cards = card_list
+        else:
+            self.cards = []
 
     def add_card(self, card):
         """
@@ -32,6 +35,13 @@ class Hand:
         """
         for i in self.cards:
             print("\t" + i.read_card())
+    
+    def has_duplicate(self):
+        for i in self.cards:
+            for j in self.cards:
+                if i.key == j.key:
+                    return True
+        return False
 
     def calculate_hand(self, cut_card=None):
         """
@@ -61,20 +71,21 @@ class Hand:
         else:
             hand = self
 
-        def populate_combos(self):
+        def populate_combos(hand):
             combos = []
-            for i in range(len(self.cards)):
-                temp = [list(x) for x in combinations(self.cards, i)]
+            for i in range(len(hand.cards)):
+                # Make all different length combinations from 1 -> n
+                temp = [list(x) for x in combinations(hand.cards, i + 1)]
                 if len(temp) > 0:
                     combos.extend(temp)
             return combos
 
         combos = populate_combos(hand)
 
-        def calculate_pairs(self):
+        def calculate_pairs(hand):
             # Create a list of cards, but only the keys
             key_list = []
-            for card in self.cards:
+            for card in hand.cards:
                 key_list.append(card.key)
             key_list = sorted(key_list)
 
@@ -127,18 +138,38 @@ class Hand:
             # - Runs: Look at every 3, 4, and 5 card combination
             #   - If one 5, no 4s
             #   - If one or two 4, no 3s
+            #   - If 2 threes, there must be a pair
 
             run_list = [x for x in run_list if len(x) == max_len]
 
             points = 0
 
+            three_count = 0
+            four_count = 0
+            five_count = 0
+
+            # TODO: Add counters to enforce the filter rules
             for i in run_list:
-                if len(i) == 3:
-                    points += 3
-                elif len(i) == 4:
-                    points += 4
-                elif len(i) == 5:
+                # Turn card list into hand object
+                i_hand = Hand(i)
+                if len(i) == 5:
+                    five_count += 1
                     points += 5
+                elif len(i) == 4:
+                    if five_count > 0:
+                        continue
+                    four_count += 1
+                    points += 4
+                elif len(i) == 3:
+                    # If there are 2 three runs and no pairs ... don't count
+                    if three_count >= 1 and i_hand.has_duplicate():
+                        continue
+                    # If there are any four runs, no three runs
+                    elif four_count > 0:
+                        continue
+                    else:
+                        three_count += 1
+                        points += 3
 
             return points
 
@@ -148,7 +179,7 @@ class Hand:
                 temp = []
                 for card in hand:
                     temp.append(card.value)
-                # Checks if the pair is equal to 15. If so, add to list of 15s
+                # Checks if the pair/set is equal to 15. If so, add to list of 15s
                 if sum(temp) == 15:
                     fifteen_list.append(temp)
 
@@ -203,7 +234,6 @@ class Hand:
 
         chosen_hand = choice(best_hands)
         # Calculate the gaurenteed number of points of chosen hand
-        guaranteed = Hand.calculate_hand(chosen_hand)
 
         # Finds the 2 cards that are not included in the best hand, and puts
         # them into the crib
@@ -212,7 +242,7 @@ class Hand:
         for i in crib_diff:
             crib_hand.add_card(i)
 
-        return chosen_hand, crib_hand, guaranteed
+        return chosen_hand, crib_hand, max_points
     
     def read_hand(hand):
         """
