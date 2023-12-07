@@ -132,9 +132,9 @@ class Hand:
             for hand in combo_list:
                 key_list = []
                 max_len = 3
-                print("//")
-                Hand(hand).display_hand()
-                print("//")
+                # print("//")
+                # Hand(hand).display_hand()
+                # print("//")
                 for card in hand:
                     key_list.append(card.key)
                 if check_consecutive_perm(key_list) and len(key_list) > 2:
